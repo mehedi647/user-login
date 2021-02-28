@@ -9,6 +9,9 @@
      <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required><br>
 
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Your Email Address" name="uname" required><br>
+
      <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required><br>
 
@@ -23,15 +26,21 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
 
 </form>
+
 </body>
 </html>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<h1>Login Successful!</h1>
-       
-</body>
-</html>
+  <?php
+
+   extract($_REQUEST);
+   $file-fopen("form-save.txt","a");
+
+   fwrite($file,"name :");
+   fwrite($file, $username . "\n");
+   fwrite($file,"Email :");
+   fwrite($file, $email . "\n");
+   fwrite($file,"Password :");
+   fwrite($file, $password . "\n");
+   fclose($file);
+
+  ?>
